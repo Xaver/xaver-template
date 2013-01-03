@@ -1,0 +1,8 @@
+<%= mini_form_for propietario, :as => :propietario, :url => [:crear, :admin, propietario, :archivos], :method => :post do |f| %>
+  <%= f.simple_fields_for :fotos_attributes, :index => nil do |foto| %>
+    <%= foto.input :titulo, :placeholder => 'Escriba el título...' %>
+    <%= foto.input :archivo, :as => :file %>
+  <% end %>
+  <%= hidden_field_tag :anchor, :fotos %>
+  <%= f.button :submit, :name => nil, :data => { :disable_with => t('espere') }, :class => 'btn btn-primary' %>
+<% end %>

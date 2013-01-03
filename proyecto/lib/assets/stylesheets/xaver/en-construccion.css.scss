@@ -1,0 +1,16 @@
+@import 'xaver/base';
+
+body { color: #fff; background: $cian image-url('xaver/transparente.png') repeat top center; }
+
+div.container { padding: 60px 0px; }
+h2 { width: 200px; }
+
+#footer {
+  padding: 10px 0px; width: 100%; background: $magenta image-url('xaver/transparente.png') repeat top center; position: absolute; bottom: 0px; left: 0px;
+  a.xaver { margin: 12px auto; background: image-url('xaver/xaver-blanco.png') no-repeat 0px 0px; }
+}
+
+form {
+  input { padding: 5px; border: none; text-align: center; margin: 0px auto; font-family: $fuente; font-size: 14px; }
+  input.btn { width: 55px; height: 20px; line-height: 11px; color: #fff; font-size: 14px; background-color: $magenta; border-radius: 5px; cursor: pointer; }
+}

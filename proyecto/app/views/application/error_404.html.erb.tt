@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <title><%= @app_name %> :: Error 404</title>
+    <%%= tag :meta, :"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8" %>
+    <%%= tag :meta, :"http-equiv" => :refresh, :content => "3;url=#{File.join 'http://', APP_CONFIG[:dominio]}" %>
+    <%%= tag :meta, :lang => :es, :name => :description, :content => variables[:descripcion] %>
+    <%%= tag :meta, :lang => :es, :name => :keywords, :content => variables[:keywords] %>
+    <%%= tag :meta, :lang => :es, :name => :author, :content => "Xaver" %>
+    <%%= stylesheet_link_tag 'xaver/error-404', :media => :all %>
+    <%%= favicon_link_tag %>
+    <%%= csrf_meta_tags %>
+
+    <!--[if lt IE 9]>
+    <%%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div id="header" class="navbar navbar-fixed-top">
+      <div class="container nav-collapse">
+        <h1>ERROR <strong>404</strong></h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <%%= link_to image_tag('default.png'), { :anchor => :default } %>
+      <p>La página que estás intentando acceder no está en el servidor.</p>
+
+      <footer id="footer">
+        <%%= link_to '', 'http://www.xaver.com.ar', :title => 'Xaver soluciones + tecnología', :class => :xaver, :target => :_blank %>
+      </footer>
+    </div>
+
+  </body>
+</html>

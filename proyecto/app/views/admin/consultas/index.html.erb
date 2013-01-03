@@ -2,9 +2,7 @@
   <h1>Consultas</h1>
 </div>
 
-<p>Se listan a continuación las consultas recibidas en el sistema.</p>
-
-<table id="listado" class="table table-striped">
-  <%= thead :nombre %>
+<%= content_tag :table, :id => nombre_tabla(Consulta), :class => [:table, :"table-striped"] do %>
+  <%= thead :fecha, :nombre_completo, :email, :telefono %>
   <%= content_tag :tbody, render(@consultas) %>
-</table>
+<% end %>

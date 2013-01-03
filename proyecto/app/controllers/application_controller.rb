@@ -7,9 +7,52 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordInvalid,  with: :record_invalid
   rescue_from CanCan::AccessDenied,         with: :access_denied
 
+  before_filter :set_variables
+  helper_method :ubicar, :variables
+
+  def index
+    set_variables 'Sitio en construcción'
+    render :layout => false
+  end
+
+  def error_404
+    set_variables 'Error 404'
+    render :layout => false
+  end
+
+  def ubicar
+    if logged_in?
+      case current_user.try(:rol)
+      when 'superadmin'
+        # path
+      when 'admin'
+        # path
+      else
+        root_path
+      end
+    else
+      root_path
+    end
+  end
+
+  def variables
+    @variables || {}
+  end
+
+  def set_variables(title = nil, description = nil, keywords = nil)
+    @variables = { title: title, description: description, keywords: keywords }
+  end
+
   private
 
-  def mensaje
-    flash.now.notice = t("notice.#{action_name}")
+  def mensaje(clave = :notice, valor = action_name)
+    msj = t("#{clave}.#{valor}")
+    case clave
+    when :notice
+      flash.now.notice = msj
+    when :alert
+      flash.now.alert = msj
+    end
   end
+
 end

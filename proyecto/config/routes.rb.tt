@@ -1,20 +1,33 @@
 # -*- encoding : utf-8 -*-
 <%= @app_name.capitalize %>::Application.routes.draw do
-  
+
   namespace :admin do
-    resources :usuarios , :except => :show
+
+    concern :archivable do
+      resources :archivos, :only => :index do
+        post :crear, :on => :collection
+        get :editar, :on => :collection
+        post :actualizar, :on => :collection
+      end
+      resources :fotos, :adjuntos, :videos do
+        post :reordenar, :on => :collection
+      end
+    end
+
+    resources :archivos, :only => :destroy
+    resources :usuarios, :except => :show
     resources :consultas, :only => [:index, :show, :destroy]
-    resources :fotos    , :only => [:edit, :update, :destroy]
-    root :to => 'admin#panel'
+
+    root :to => 'admin#index'
   end 
  
-  resources :sesiones , :only => [:index, :new, :create, :destroy]
+  resources :sesiones, :only => [:index, :new, :create, :destroy]
   resources :consultas, :only => :create
  
-  match :contacto, :to => 'consultas#new'   , :as => :contacto
-  match :login   , :to => 'sesiones#new'    , :as => :login
-  match :logout  , :to => 'sesiones#destroy', :as => :logout
+  match :contacto, :to => 'consultas#new'
+  match :login, :to => 'sesiones#new'
+  match :logout, :to => 'sesiones#destroy'
 
-  root :to => 'application#portada'
+  root :to => 'application#index'
 
 end

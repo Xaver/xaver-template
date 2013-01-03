@@ -1,7 +1,7 @@
-<div class="foto">
-  <%= foto foto, "400x300", "#c" %>
+<%= tr_for foto do %>
   <%= f.simple_fields_for :elementos, foto, :index => foto.id do |formulario| %>
-    <%= formulario.input :titulo %>
-    <%= formulario.input :remove_archivo, :label => "Eliminar", :as => :boolean if foto.archivo.present? %>
-  <%- end -%>
-</div>
+    <td><%= foto.id %></td>
+    <td><%= imagen foto.archivo, "60x30" %></td>
+    <td><%= formulario.input :titulo, :placeholder => 'Título...' %></td>
+  <% end %>
+<% end %>

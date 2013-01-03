@@ -1,0 +1,8 @@
+<div class="btn-group dropdown">
+  <%= boton_dropdown %>
+  <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+    <% for boton in botones %>
+      <%= content_tag :li, boton %>
+    <% end %>
+  </ul>
+</div>

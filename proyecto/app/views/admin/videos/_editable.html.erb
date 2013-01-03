@@ -1,0 +1,8 @@
+<%= tr_for video do %>
+  <%= f.simple_fields_for :elementos, video, :index => video.id do |formulario| %>
+    <td><%= video.id %></td>
+    <td><%= image_tag video.thumbnail_url %></td>
+    <td><%= formulario.input :titulo %></td>
+    <td><%= formulario.input :codigo %></td>
+  <% end %>
+<% end %>

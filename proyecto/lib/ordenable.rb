@@ -6,7 +6,7 @@ module Ordenable
       nuevo_orden = params[:elementos].index(elemento.id.to_s)
       elemento.update_column :orden, nuevo_orden unless (elemento.orden == nuevo_orden)
     end
-    flash.now.notice = t("notice.#{action_name}")
+    mensaje
   end
 
 end

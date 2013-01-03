@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Notificador < ActionMailer::Base
-  default from: "Nombre Sitio <robot@xaver.com.ar>"
+  helper :application
+  default css: :email, from: "Nombre Sitio <robot@xaver.com.ar>"
 
   def consulta(consulta)
     @consulta = consulta

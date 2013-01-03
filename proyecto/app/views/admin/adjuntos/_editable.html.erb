@@ -1,0 +1,7 @@
+<%= tr_for adjunto do %>
+  <%= f.simple_fields_for :elementos, adjunto, :index => adjunto.id do |formulario| %>
+    <td><%= adjunto.id %></td>
+    <td><%= link_to 'visualizar', adjunto %></td>
+    <td><%= formulario.input :titulo %></td>
+  <% end %>
+<% end %>

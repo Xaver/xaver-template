@@ -1,3 +1,6 @@
+## v.2.0.0.beta
+1- Modernizado para el uso de la nueva plantilla de administración
+
 ## v1.2.0
 1- Nuevo template Documentado => documentado.rb
 

@@ -10,9 +10,9 @@ namespace :cargar do
   end
      
   task :todo => :environment do
-    printf "\nCARGAR:TODO:\n"
-    cargar :usuarios # Agregar otros tasks segùn sea necesario
-    printf "Cargado con exito\n"
+    puts 'Cargando...'
+    cargar :usuarios
+    puts 'Listo!'
   end
     
   def cargar(nombre)
@@ -24,7 +24,7 @@ namespace :cargar do
   end
   
   def invocar(tarea)
-    printf "#{tarea.to_s.upcase}\n"
+    puts tarea.to_s.upcase
     Rake::Task[tarea].invoke
   end
 end

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'dragonfly'
 app = Dragonfly[:images]
 
@@ -9,7 +10,7 @@ app.datastore.configure do |c|
   c.secret_access_key = APP_CONFIG[:secret_access_key]
 end
 
-app.configure { |c| c.url_host = "http://#{APP_CONFIG[:dominio]}" }
+app.configure { |c| c.url_host = File.join('http://', APP_CONFIG[:dominio]) } if Rails.env.production?
 
 app.configure_with(:imagemagick)
 app.configure_with(:rails)

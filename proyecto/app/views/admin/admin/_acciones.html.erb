@@ -1,0 +1,11 @@
+<%= botones[:mover] %>
+<div class="btn-group dropdown">
+  <%= boton_dropdown %>
+  <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+    <%= content_tag :li, botones[:editar] if botones[:editar] %>
+    <%= content_tag :li, botones[:ver] if botones[:ver] %>
+    <%= content_tag :li, botones[:archivos] if botones[:archivos] %>
+    <li class="divider"></li>
+    <%= content_tag :li, botones[:eliminar] if botones[:eliminar] %>
+  </ul>
+</div>

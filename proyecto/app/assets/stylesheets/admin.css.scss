@@ -1,0 +1,11 @@
+@import 'bourbon';
+@import 'bootstrap';
+@import 'jquery.ui.all';
+@import 'xaver';
+
+span.imagen {
+  display: block; position: relative; overflow: hidden; height: 50px;
+  img, object { position: absolute; top: 0px; left: 200px; }
+}
+
+td.iconos a i { padding-top: 4px; }

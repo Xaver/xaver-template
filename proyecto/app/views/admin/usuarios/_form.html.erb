@@ -1,11 +1,11 @@
-<%= simple_form_for usuario, :url => url, :html => { :class => 'form-horizontal', :autocomplete => "off" } do |f| %>
-  <%= f.input :username, :autofocus => true, :disabled => (usuario.username.present? && !usuario.new_record?) %>
-  <%= f.input :rol, :as => :select, :collection => current_user.roles_que_puede_crear, :label_method => :humanize if can?(:manage, Usuario) && usuario.new_record? %>
-  <%= f.input :email %>
+<%= simple_form_for usuario, :url => [:admin, usuario], :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => 'input-xxlarge' } } do |f| %>
+  <%= f.input :username, :autofocus => true, :disabled => usuario.username.present? && usuario.persisted? %>
+  <%= f.input :email, :disabled => usuario.email.present? && usuario.persisted? %>
+  <%= f.input :rol, :as => :select, :collection => current_user.roles_que_puede_crear, :label_method => :humanize if usuario.new_record? && can?(:manage, Usuario) %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
 
-  <div class="controls">
-    <%= f.button :submit, :name => nil, :disable_with => t("espere"), :class => 'btn btn-primary' %>
+  <div class="form-actions">
+    <%= f.button :submit, :name => nil, :data => { :disable_with => t('espere') }, :class => 'btn btn-primary' %>
   </div>
 <% end %>

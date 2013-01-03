@@ -1,0 +1,43 @@
+<div class="page-header">
+  <nav class="pull-right">
+    <%= boton_edicion_masiva @propietario %>
+    <%= boton_volver @propietario.class %>
+  </nav>
+  <h1>
+    Archivos
+    <small><%= @propietario.to_label %></small>
+  </h1>
+</div>
+
+<ul class="nav nav-tabs">
+  <li><%= link_to 'Fotos', { :anchor => :fotos }, :data => { :toggle => :tab } %></li>
+  <li><%= link_to 'Adjuntos', { :anchor => :adjuntos }, :data => { :toggle => :tab } %></li>
+  <li><%= link_to 'Videos', { :anchor => :videos }, :data => { :toggle => :tab } %></li>
+</ul>
+
+<div class="tab-content">
+  <div id="fotos" class="tab-pane">
+    <%= render "admin/fotos/mini_form", :propietario => @propietario %>
+    <%= content_tag :table, :id => nombre_tabla(Foto), :class => [:table, :"table-striped", :ordenable] do %>
+      <%= thead :id, :preview, :titulo, :tamano, :peso %>
+      <%= content_tag :tbody, render(@fotos) %>
+      <%= hidden_field_tag :url, admin_polymorphic_path(@propietario, :fotos, :reordenar), :class => :url %>
+    <% end %>
+  </div>
+  <div id="adjuntos" class="tab-pane">
+    <%= render 'admin/adjuntos/mini_form', :propietario => @propietario %>
+    <%= content_tag :table, :id => nombre_tabla(Adjunto), :class => [:table, :"table-striped", :ordenable] do %>
+      <%= thead :id, :titulo, :peso %>
+      <%= content_tag :tbody, render(@adjuntos) %>
+      <%= hidden_field_tag :url, admin_polymorphic_path(@propietario, :adjuntos, :reordenar), :class => :url %>
+    <% end %>
+  </div>
+  <div id="videos" class="tab-pane">
+    <%= render "admin/videos/mini_form", :propietario => @propietario %>
+    <%= content_tag :table, :id => nombre_tabla(Video), :class => [:table, :"table-striped", :ordenable] do %>
+      <%= thead :id, :preview, :titulo, :codigo %>
+      <%= content_tag :tbody, render(@videos), :id => 'probando' %>
+      <%= hidden_field_tag :url, admin_polymorphic_path(@propietario, :videos, :reordenar), :class => :url %>
+    <% end %>
+  </div>
+</div>

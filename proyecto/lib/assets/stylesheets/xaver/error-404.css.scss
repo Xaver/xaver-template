@@ -1,0 +1,32 @@
+@import 'xaver/base';
+
+body { padding-top: 100px; background: #fff image-url('xaver/blanco.png') repeat top center; }
+
+#header {
+  background: $magenta image-url('xaver/transparente.png') repeat top center;
+  h1 { font-size: 40px; padding: 20px 0px; font-weight: normal; }
+}
+
+p { font-size: 18px; color: $gris; }
+a { text-decoration: none; }
+
+div.container {
+  img { width: 300px; margin: 10px 0px; }
+  nav {
+    margin: auto;
+    ul {
+      margin: 0px; padding: 0px; list-style: none;
+      li {
+        display: inline-block; color: $gris; width: 110px;
+        &:last-child a { border-right: none; }
+        a { display: block; color: $magenta; font-size: 14px; padding: 0px 10px; border-right: 1px solid $gris; text-align: center; }
+        a:hover { color: $gris; }
+      }
+    }
+  }
+}
+
+#footer {
+  margin-top: 40px;
+  a.xaver { margin: auto; background: image-url('xaver/xaver-color.png') no-repeat 0px 0px; }
+}

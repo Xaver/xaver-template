@@ -1,0 +1,6 @@
+<%= tr_for adjunto do %>
+  <td><%= adjunto.id %></td>
+  <td><%= adjunto.titulo %></td>
+  <td><%= icono 'warning-sign' if adjunto.peso > Adjunto::PESO_LIMITE %> <%= number_to_human_size adjunto.peso %></td>
+  <td><%= acciones :mover => boton_mover(Adjunto), :ver => boton_ver(adjunto), :eliminar => boton_eliminar(adjunto, admin_archivo_path(adjunto)) %></td>
+<% end %>

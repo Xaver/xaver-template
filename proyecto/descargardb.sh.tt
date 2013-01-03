@@ -1,0 +1,23 @@
+DATABASE="<%= app_name %>"
+DESTINO="tmp/bbdd.dumb"
+
+echo "BACKUP: Generando"
+# `heroku pgbackups:capture DATABASE_URL --expire`
+
+echo "BACKUP: Descargando en $DESTINO"
+`mkdir -p 'tmp'`
+wget -O $DESTINO `heroku pgbackups:url`
+
+echo "BACKUP: Descargado"
+echo "BBDD: Preparando"
+`rake db:drop`
+`rake db:create`
+
+echo "BBDD: Restaurando"
+`pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d $DATABASE $DESTINO`
+
+echo "BACKUP: ELIMINANDO"
+`rm -f $DESTINO`
+
+echo "BACKUP: LESTOOOOOOOOOOOOOOOO"
+echo "BBDD: $DATABASE"

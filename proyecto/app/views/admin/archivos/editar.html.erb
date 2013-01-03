@@ -1,0 +1,43 @@
+<div class="page-header">
+  <nav class="pull-right">
+    <%= boton_volver @propietario.class, [:admin, @propietario, :archivos] %>
+  </nav>
+  <h1>
+    Archivos
+    <small><%= @propietario.to_label %></small>
+  </h1>
+</div>
+
+<ul class="nav nav-tabs">
+  <li><%= link_to 'Fotos', { :anchor => :fotos }, :data => { :toggle => :tab } %></li>
+  <li><%= link_to 'Adjuntos', { :anchor => :adjuntos }, :data => { :toggle => :tab } %></li>
+  <li><%= link_to 'Videos', { :anchor => :videos }, :data => { :toggle => :tab } %></li>
+</ul>
+
+<%= mini_form_for @propietario, :as => :propietario, :url => [:actualizar, :admin, @propietario, :archivos], :method => :post do |f| %>
+  <div class="tab-content">
+    <div id="fotos" class="tab-pane">
+      <%= content_tag :table, :id => nombre_tabla(Foto), :class => [:table, :"table-striped"] do %>
+        <%= thead :id, :preview, :titulo %>
+        <%= content_tag :tbody, render(:partial => "admin/fotos/editable", :collection => @propietario.fotos, :as => :foto, :locals => { :f => f }) %>
+      <% end %>
+    </div>
+    <div id="adjuntos" class="tab-pane">
+      <%= content_tag :table, :id => nombre_tabla(Adjunto), :class => [:table, :"table-striped"] do %>
+        <%= thead :id, :preview, :titulo %>
+        <%= content_tag :tbody, render(:partial => "admin/adjuntos/editable", :collection => @propietario.adjuntos, :as => :adjunto, :locals => { :f => f }) %>
+      <% end %>
+    </div>
+    <div id="videos" class="tab-pane">
+      <%= content_tag :table, :id => nombre_tabla(Video), :class => [:table, :"table-striped"] do %>
+        <%= thead :id, :preview, :titulo, :codigo %>
+        <%= content_tag :tbody, render(:partial => "admin/videos/editable", :collection => @propietario.videos, :as => :video, :locals => { :f => f }) %>
+      <% end %>
+    </div>
+    <%#= render :partial => "admin/adjuntos/editable", :collection => @propietario.adjuntos, :as => :adjunto, :locals => { :f => f } %>
+    <%#= render :partial => "admin/videos/editable", :collection => @propietario.videos, :as => :video, :locals => { :f => f } %>
+  </div>
+    <div class="form-actions">
+      <%= f.button :submit, :name => nil, :data => { :disable_with => t('espere') }, :class => 'btn btn-primary' %>
+    </div>
+  <% end %>

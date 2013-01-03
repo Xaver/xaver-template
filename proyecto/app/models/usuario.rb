@@ -1,15 +1,30 @@
 # -*- encoding : utf-8 -*-
 class Usuario < ActiveRecord::Base
+
+  ##############################################################################
+  #### CONFIGURACIONES Y RELACIONES
+  ##############################################################################
+
+  ROLES = 'superadmin', 'admin'
+
   authenticates_with_sorcery!
 
   attr_accessible :username, :email, :password, :password_confirmation, :rol
 
+  ##############################################################################
+  #### SCOPES Y VALIDACIONES
+  ##############################################################################
+
+  default_scope -> { order{username} }
+
   validates :password, :confirmation => true
   validates :password, :presence => true, :on => :create
-  validates :username, :presence => true, :uniqueness => true
+  validates :username, :email, :presence => true, :uniqueness => true
   validates :rol, :presence => true
 
-  ROLES = 'superadmin', 'admin'
+  ##############################################################################
+  #### MÉTODOS PÚBLICOS
+  ##############################################################################
 
   def rol_es?(un_rol)
     rol == un_rol.to_s
@@ -25,14 +40,24 @@ class Usuario < ActiveRecord::Base
   end
 
   def se_puede_eliminar?
-    # No se pueden eliminar usuarios
-    false
+    true
   end
-  
+
   def destroy
     super if se_puede_eliminar?
   end
 
+  ##############################################################################
+  #### ALIAS E IMPRESIONES
+  ##############################################################################
+
+  alias_attribute :to_label, :username
   alias_attribute :to_s, :username
+
+  ##############################################################################
+  #### MÉTODOS PRIVADOS
+  ##############################################################################
+
+  private
 
 end

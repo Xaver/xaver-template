@@ -1,8 +1,12 @@
-<div class='hero-unit'>
+<div class="page-header">
   <h1>Iniciar sesión</h1>
-
-
-  <p>Ingrese su nombre de usuario y contraseña para iniciar sesión.</p>
-
-  <%= render 'form' %>
 </div>
+
+<%= simple_form_for Usuario.new, :url => sesiones_path, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => 'input-xxlarge' } } do |f| %>
+  <%= f.input :username, :autofocus => true %>
+  <%= f.input :password %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :name => nil, :data => { :disable_with => t('espere') }, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

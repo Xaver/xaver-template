@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '~> 3.2.9'
 gem 'pg'
 gem 'dalli'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'meta_search'
 
@@ -13,7 +14,9 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '2.1.8'
+  gem 'less-rails'
+  gem 'therubyracer', '0.10.2'
   gem 'quiet_assets'
 end
 
@@ -21,21 +24,36 @@ group :development do
   gem 'letter_opener'
   gem 'foldscaf'
   gem 'magic_encoding'
+  gem 'annotate'
 end
 
 group :production do
   gem 'thin'
   gem 'foreman'
-  gem 'exception_notification'
+  gem 'exception_notification', '2.6.1'
 end
 
-gem 'sorcery'
+# Gemas Rails 4.0
+gem 'turbolinks'
+gem 'cache_digests'
+gem 'strong_parameters'
+gem 'routing_concerns'
+
+# Gemas de auxilio
 gem 'simple_form'
 gem 'cancan'
 gem 'friendly_id'
 gem 'squeel'
+gem 'RedCloth'
+gem 'roadie'
+gem 'bullet'
+gem 'bourbon'
+# gem 'rest-client'
+
+# Imágenes
 gem 'dragonfly'
 gem 'fog'
 gem 'rack-cache', require: 'rack/cache'
-gem 'RedCloth'
-gem 'rack-rewrite'
+
+# Autenticación
+gem 'sorcery'

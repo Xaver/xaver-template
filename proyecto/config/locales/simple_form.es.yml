@@ -12,6 +12,7 @@ es:
         nombre: "Nombre"
         apellido: "Apellido"
         direccion: "Dirección"
+        localidad: "Localidad"
         telefono: "Teléfono"
         email: "Correo electrónico"
         mensaje: "Mensaje"

@@ -1,4 +1,4 @@
-$("table#<%= nombre_tabla(@elemento.class) %> tbody").append("<%= j render(@elemento) %>");
-$("form input.string").val("");
+$('#<%= nombre_tabla(@elemento.class) %> tbody').append('<%= j render(@elemento) %>');
+$('#new_<%= @elemento.class.name.tableize.singularize %> input.string').val('');
 
 <%= render "recargar" %>

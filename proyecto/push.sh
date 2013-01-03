@@ -2,13 +2,6 @@
 if [ -z "$1" ]; then
   echo "Debe especificar un mensaje!"
 else
-  if [ -f ./tmp/pids/passenger.3000.pid ]; then
-    echo "\nDeteniendo servidor...\n"
-    passenger stop
-  else
-    echo "\nEl servidor está detenido"
-  fi
-
   echo "Limpiando logs..."
   rake log:clear
 
@@ -25,5 +18,5 @@ else
   git push heroku master
 
   echo "\nCorriendo el servidor..."
-  passenger start
+  rails s
 fi

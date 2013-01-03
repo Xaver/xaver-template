@@ -1,4 +1,7 @@
-<%= content_tag :tr, :id => "elementos_#{consulta.id}" do %>
-  <td><%= link_to "#{l consulta.created_at} | #{consulta.nombre_completo}", admin_consulta_path(consulta) %></td>
-  <td style="text-align:right;"><%= link_to "Eliminar", admin_consulta_path(consulta), :method => :delete, :confirm => t("confirmacion"), :remote => true, :class => 'btn btn-mini btn-danger' %></td>
+<%= tr_for consulta do %>
+  <td><%= fecha consulta.created_at %></td>
+  <td><%= consulta.nombre_completo %></td>
+  <td><%= consulta.email %></td>
+  <td><%= consulta.telefono %></td>
+  <td><%= acciones :ver => boton_ver(consulta, admin_consulta_path(consulta)), :eliminar => boton_eliminar(consulta) %></td>
 <% end %>

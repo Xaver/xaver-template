@@ -1,9 +1,8 @@
-<%= content_tag :tr, :id => "elementos_#{foto.id}" do %>
-  <td><%= foto foto, "100x" %></td>
+<%= tr_for foto do %>
+  <td><%= foto.id %></td>
+  <td><%= imagen foto.archivo, "120x90" %></td>
   <td><%= foto.titulo %></td>
-  <td style="text-align:right;">
-    <%= link_to icono('move', :black) + " Mover", "#", :class => 'btn btn-mini handle', :title => 'Mantenga click y arrastre para reordenar' %>
-    <%= link_to 'Editar', edit_admin_foto_path(foto), :class => 'btn btn-mini' if can? :editar, foto %>
-    <%= link_to "Eliminar", admin_foto_path(foto), :method => :delete, :confirm => t("confirmacion"), :remote => true, :class => 'btn btn-mini btn-danger' if can? :destroy, foto %>
-  </td>
+  <td><%= icono 'warning-sign' if !foto.width.in? Foto::WIDTH_RECOMENDADO %> <%= foto.width %>x<%= foto.height %></td>
+  <td><%= icono 'warning-sign' if foto.peso > Foto::PESO_LIMITE %> <%= number_to_human_size foto.peso %></td>
+  <td><%= acciones :mover => boton_mover(Foto), :ver => boton_ver(foto), :eliminar => boton_eliminar(foto, admin_archivo_path(foto)) %></td>
 <% end %>
