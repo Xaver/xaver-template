@@ -5,9 +5,7 @@
         <data xmlns="http://www.netbeans.org/ns/ruby-project/1">
             <name>Xaver template</name>
             <source-roots>
-                <root id="src.dir" name="proyecto"/>
-                <root id="minimo.dir"/>
-                <root id="documentado.dir"/>
+                <root id="src.recipes.dir"/>
             </source-roots>
             <test-roots/>
         </data>
