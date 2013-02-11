@@ -3,9 +3,9 @@
     <type>org.netbeans.modules.ruby.rubyproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/ruby-project/1">
-            <name>Xaver template</name>
+            <name>xaver-template</name>
             <source-roots>
-                <root id="src.lib.dir"/>
+                <root id="src.dir"/>
             </source-roots>
             <test-roots/>
         </data>
