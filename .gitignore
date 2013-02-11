@@ -4,6 +4,8 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
-# Ignore all logfiles and tempfiles.
-/nbproject
-/nbproject/*.*
+/nbproject/
+/nbproject/project.properties
+/nbproject/project.xml
+/nbproject/private/
+/nbproject/private/private.properties
