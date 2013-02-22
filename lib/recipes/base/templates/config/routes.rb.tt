@@ -3,8 +3,6 @@
 
   namespace :admin do
 
-    resources :usuarios, :except => :show
-
     root :to => 'admin#index'
   end 
  
