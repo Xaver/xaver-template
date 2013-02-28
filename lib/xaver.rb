@@ -101,6 +101,7 @@ Ejecutando generadores...
 
 generate "simple_form:install --bootstrap"
 comment_lines 'config/initializers/simple_form.rb', /config.browser_validations = false/
+remove_file "config/locales/simple_form.en.yml"
 
 generate "sorcery:install remember_me --model Usuario"
 remove_file File.join("..", @app_name, "app", "models", "usuario.rb")

@@ -1,13 +1,17 @@
 # -*- encoding : utf-8 -*-
 <%= @app_name.capitalize %>::Application.routes.draw do
 
+  concern :ordenable do
+    post :reordenar, :on => :collection
+  end
+
   namespace :admin do
 
     root :to => 'admin#index'
-  end 
- 
+  end
+
   resources :sesiones, :only => [:index, :new, :create, :destroy]
-  
+
   match :login, :to => 'sesiones#new'
   match :logout, :to => 'sesiones#destroy'
 

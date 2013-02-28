@@ -4,21 +4,24 @@ puts "\nConfigurando archivos..."
 directory @directorio, File.join("..", @app_name)
 
 insert_into_file "config/routes.rb", :before => "root :to => 'application#index'" do
-  "\nresources :fotos, :adjuntos, :videos, :only => :show\n"
+  "
+  resources :fotos, :adjuntos, :videos, :only => :show
+
+  "
 end
 
-insert_into_file "config/routes.rb", :after => "namespace :admin do" do
-  "\nconcern :archivable do
-      resources :archivos, :only => :index do
-        post :crear, :on => :collection
-        get :editar, :on => :collection
-        post :actualizar, :on => :collection
-      end
-      resources :fotos, :adjuntos, :videos do
-        post :reordenar, :on => :collection
-      end
+insert_into_file "config/routes.rb", :before => "namespace :admin" do
+  "concern :archivable do
+    resources :archivos, :only => :index do
+      post :crear, :on => :collection
+      get :editar, :on => :collection
+      post :actualizar, :on => :collection
     end
+    resources :fotos, :adjuntos, :videos, :concerns => :ordenable
+  end
 
-    resources :archivos, :only => :destroy\n"
+  resources :archivos, :only => :destroy
+
+  "
 end
 
