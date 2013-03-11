@@ -1,4 +1,6 @@
 $('#<%= nombre_tabla(@elemento.class) %> tbody').append('<%= j render(@elemento) %>');
-$('#new_<%= @elemento.class.name.tableize.singularize %> input.string').val('');
+$('#new_<%= nombre_tabla(@elemento.class).singularize %> input.string').val('');
+
+$('#<%= id_for @elemento %> div.dropdown a.principal').link_dropdown();
 
 <%= render "recargar" %>

@@ -1,9 +1,15 @@
-## v.2.0.0.beta
+## v.2.0.0.beta1
 1- Modernizado para el uso de la nueva plantilla de administración
-2- Divididos los templates para heroku, archivos y consultas.
+2- Dividido el código en recetas. Las recetas son aplicables:
+* Base
+* Archivos
+* Consultas
+* Usuarios
+* Heroku
 3- Es opcional seleccionar las cosas que uno quiere para su aplicación.
-4- Ahora se utilizan los generators de las gemas en vez de reemplazar los archivos de configuración.
+4- Ahora se utilizan los generators de las gemas en vez de reemplazar los archivos de configuración (initializers).
 5- Suprimidos documentado y minimo.
+6- Refactoring de la plantilla base ajustandola a las últimas tendencias.
 
 ## v1.2.0
 1- Nuevo template Documentado => documentado.rb

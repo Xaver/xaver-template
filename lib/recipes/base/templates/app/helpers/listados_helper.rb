@@ -5,16 +5,24 @@ module ListadosHelper
     render 'desplegable', :botones => args
   end
 
+  def nav_li(clase)
+    if can? :index, clase
+      content_tag :li, link_to(clase.name.humanize.pluralize, [:admin, clase])
+    else
+      content_tag :li, link_to(clase.name.humanize.pluralize, { :anchor => clase.name.tableize }), :class => :disabled
+    end
+  end
+
   def acciones(*args)
     render 'acciones', :botones => args.extract_options!
   end
 
   def tr_for(elemento, &block)
-    content_tag :tr, capture(&block), id: "elementos_#{elemento.to_param}"
+    content_tag :tr, capture(&block), id: id_for(elemento), data: { id: "elementos_#{elemento.id}" }
   end
 
-  def boton_new(klass)
-    link_to icono(:plus) + " Agregar #{klass.name.singularize}", [:new, :admin, klass.name.underscore], :class => 'btn btn-primary btn-large' if can? :create, klass
+  def boton_new(klass, nested_resource = nil)
+    link_to icono(:plus) + " Agregar #{klass.name.singularize}", [:new, :admin, nested_resource, klass.name.underscore], :class => 'btn btn-primary btn-large' if can? :create, klass
   end
 
   def boton_new_desplegable(klass)
@@ -45,6 +53,14 @@ module ListadosHelper
     else
       link_to icono('file') + content_tag(:span, 'Archivos'), { :anchor => :archivos }, :class => :disabled, :title => 'No se pueden agregar archivos'
     end
+  end
+
+#  def boton_index_nested(recurso, nested)
+#    link_to icono('folder-open') + content_tag(:span, nested.to_s.humanize), [:admin, recurso, nested], tabindex: -1
+#  end
+
+  def boton_action_nested(recurso, nested, action = nil, texto = nil, icono = 'folder-open')
+    link_to icono(icono) + content_tag(:span, texto.presence || nested.to_s.humanize), [action, :admin, recurso, nested], tabindex: -1
   end
 
   def boton_ver(recurso, path = nil)

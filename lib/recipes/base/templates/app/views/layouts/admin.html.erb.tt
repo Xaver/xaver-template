@@ -54,7 +54,7 @@
         </div>
 
         <div class="span10">
-          <%%= mensajes_flash %>
+          <%%= content_tag :div, bootstrap_flash, :id => :flash %>
           <%%= yield %>
         </div>
 
