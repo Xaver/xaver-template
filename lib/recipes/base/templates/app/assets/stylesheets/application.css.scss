@@ -1,5 +1,7 @@
 @import 'bourbon';
 @import 'bootstrap';
-@import 'xaver';
+@import 'colorbox';
 
 textarea { max-height: 100px; }
+
+a.xaver { display: block; width: 125px; height: 25px; margin: 0px auto; background: image-url('xaver/xaver-color.png') no-repeat 0px 0px; }

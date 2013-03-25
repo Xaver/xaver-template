@@ -16,3 +16,5 @@ es:
         telefono: "Teléfono"
         email: "Correo electrónico"
         mensaje: "Mensaje"
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"

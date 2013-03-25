@@ -1,4 +1,13 @@
-## v.2.0.0.beta1
+## v2.0.0.rc1
+1 - Correcciones en templates de archivos.
+2 - Listados compactos.
+3 - Agregado colorbox.
+4 - Agregado holder.
+5 - Agregado turbolinks.
+6 - Normalizado stylesheet xaver.css
+7 - Locales expandidos.
+
+## v2.0.0.beta1
 1- Modernizado para el uso de la nueva plantilla de administración
 2- Dividido el código en recetas. Las recetas son aplicables:
 * Base

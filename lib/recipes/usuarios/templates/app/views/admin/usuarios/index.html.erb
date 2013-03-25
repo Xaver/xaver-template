@@ -5,7 +5,7 @@
   <h1>Usuarios</h1>
 </div>
 
-<%= content_tag :table, :id => nombre_tabla(Usuario), :class => [:table, :"table-striped"] do %>
+<%= content_tag :table, :id => nombre_tabla(Usuario), :class => ["table", "table-condensed", "table-hover"] do %>
   <%= thead :username, :email, :rol %>
   <%= content_tag :tbody, render(@usuarios) %>
 <% end %>

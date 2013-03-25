@@ -6,9 +6,9 @@ git :commit => "-am 'Commit inicial'"
 
 append_file ".gitignore", ""
 append_file ".gitignore", "config/database.yml"
-append_file ".gitignore", "nbproject"
-append_file ".gitignore", "tmp"
-append_file ".gitignore", "log"
+append_file ".gitignore", "nbproject/*"
+append_file ".gitignore", "tmp/*"
+append_file ".gitignore", "log/*"
 append_file ".gitignore", "log/*.log"
 
 run "heroku create #{@app_name}"

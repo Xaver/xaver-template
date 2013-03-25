@@ -5,10 +5,11 @@ module ListadosHelper
     render 'desplegable', :botones => args
   end
 
-  def nav_li(clase)
+  def nav_li(clase, *args)
+    options = args.extract_options!.symbolize_keys!
     if can? :index, clase
       content_tag :li, link_to(clase.name.humanize.pluralize, [:admin, clase])
-    else
+    elsif !options[:protegido]
       content_tag :li, link_to(clase.name.humanize.pluralize, { :anchor => clase.name.tableize }), :class => :disabled
     end
   end
@@ -38,8 +39,8 @@ module ListadosHelper
   end
 
   def boton_dropdown
-    dropdown = link_to 'Acciones', { :anchor => :dropdown }, :class => 'btn btn-primary principal'
-    flecha = button_tag content_tag(:span, nil, :class => :caret), :class => 'btn btn-primary dropdown-toggle', :data => { :toggle => :dropdown }
+    dropdown = link_to 'Acciones', { :anchor => :dropdown }, :class => 'btn btn-small btn-primary principal'
+    flecha = button_tag content_tag(:span, nil, :class => :caret), :class => 'btn btn-small btn-primary dropdown-toggle', :data => { :toggle => :dropdown }
     return dropdown + flecha
   end
 
@@ -54,10 +55,6 @@ module ListadosHelper
       link_to icono('file') + content_tag(:span, 'Archivos'), { :anchor => :archivos }, :class => :disabled, :title => 'No se pueden agregar archivos'
     end
   end
-
-#  def boton_index_nested(recurso, nested)
-#    link_to icono('folder-open') + content_tag(:span, nested.to_s.humanize), [:admin, recurso, nested], tabindex: -1
-#  end
 
   def boton_action_nested(recurso, nested, action = nil, texto = nil, icono = 'folder-open')
     link_to icono(icono) + content_tag(:span, texto.presence || nested.to_s.humanize), [action, :admin, recurso, nested], tabindex: -1

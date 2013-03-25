@@ -22,14 +22,14 @@ class Admin::ArchivosController < Admin::AdminController
   def crear
     begin
       @propietario.update_attributes! params[:propietario]
-      redirect_to admin_polymorphic_path(@propietario, :archivos, nil, :anchor => params[:anchor]), notice: mensaje
+      redirect_to polymorphic_path([:admin, @propietario, :archivos], :anchor => params[:anchor]), notice: mensaje
     rescue
-      redirect_to admin_polymorphic_path(@propietario, :archivos, nil, :anchor => params[:anchor]), alert: mensaje(:alert)
+      redirect_to polymorphic_path([:admin, @propietario, :archivos], :anchor => params[:anchor]), alert: mensaje(:alert)
     end
   end
 
   def editar
-    redirect_to [@propietario, :archivos], notice: notice if @archivos.empty?
+    redirect_to [:admin, @propietario, :archivos], notice: notice if @archivos.empty?
   end
 
   def actualizar

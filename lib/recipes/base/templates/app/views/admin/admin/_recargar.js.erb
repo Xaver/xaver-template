@@ -1,2 +1,6 @@
 $('#flash').html('<%= j bootstrap_flash %>').effect("bounce", { direction: "down", times: 3 }, 300);
 $('input.string:first').focus();
+
+$('div.dropdown a.principal').each(function(){
+  $(this).link_dropdown();
+});

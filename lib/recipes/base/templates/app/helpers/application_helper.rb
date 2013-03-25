@@ -18,15 +18,6 @@ module ApplicationHelper
     una_fecha.present? ? l(una_fecha, opciones) : "-"
   end
 
-  def carousel(*args, &block)
-    bloque = block_given? ? capture(&block) : args.first
-    html_options = args.extract_options!
-    html_options[:class] = [html_options[:class], 'carousel', 'slide'].compact.join(" ")
-    content_tag :div, html_options do
-      content_tag :div, bloque, :class => 'carousel-inner'
-    end
-  end
-
   def analytics(codigo)
     render 'analytics', :codigo => codigo if codigo.present? && Rails.env.production?
   end

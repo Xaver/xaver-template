@@ -39,8 +39,8 @@ class ApplicationController < ActionController::Base
     @variables || {}
   end
 
-  def set_variables(title = nil, description = nil, keywords = nil)
-    @variables = { title: title, description: description, keywords: keywords }
+  def set_variables(*args)
+    @variables = args.extract_options!
   end
 
   private

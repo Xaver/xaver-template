@@ -2,7 +2,7 @@
   <h1>Consultas</h1>
 </div>
 
-<%= content_tag :table, :id => nombre_tabla(Consulta), :class => [:table, :"table-striped"] do %>
+<%= content_tag :table, :id => nombre_tabla(Consulta), :class => ["table", "table-condensed", "table-hover"] do %>
   <%= thead :fecha, :nombre_completo, :email, :telefono %>
   <%= content_tag :tbody, render(@consultas) %>
 <% end %>
