@@ -22,6 +22,6 @@
 
     <%%= yield %>
 
-    <%= link_to "", 'http://www.xaver.com.ar', :target => :_blank, :title => "Xaver soluciones + tecnología", :class => :xaver %>
+    <%%= link_to "", 'http://www.xaver.com.ar', :target => :_blank, :title => "Xaver soluciones + tecnología", :class => :xaver %>
   </body>
 </html>

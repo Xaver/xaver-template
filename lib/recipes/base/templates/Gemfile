@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '~> 3.2.13'
 gem 'pg'
@@ -8,11 +9,6 @@ gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'meta_search'
 
-# Twitter bootstrap
-gem 'twitter-bootstrap-rails'
-gem 'less-rails'
-gem 'therubyracer'#, '0.10.2'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -20,6 +16,11 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'quiet_assets'
+
+  # Twitter bootstrap
+  gem 'twitter-bootstrap-rails'
+  gem 'less-rails'
+  gem 'therubyracer'
 end
 
 group :development do
@@ -27,6 +28,7 @@ group :development do
   gem 'foldscaf', '~> 2.0.0.rc'
   gem 'magic_encoding'
   gem 'annotate'
+  gem 'commands'
 end
 
 group :production do

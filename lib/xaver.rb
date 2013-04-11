@@ -99,7 +99,7 @@ puts "-------------------------------------------------------
 Ejecutando generadores...
 -------------------------------------------------------"
 
-generate "simple_form:install --bootstrap"
+generate 'simple_form:install --bootstrap'
 comment_lines 'config/initializers/simple_form.rb', /config.browser_validations = false/
 remove_file "config/locales/simple_form.en.yml"
 
