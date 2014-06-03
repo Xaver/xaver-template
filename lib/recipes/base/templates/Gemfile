@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '~> 3.2.13'
+gem 'rails', '~> 3.2.15'
 gem 'pg'
 gem 'dalli'
 gem 'jquery-rails'
@@ -29,12 +29,11 @@ group :development do
   gem 'magic_encoding'
   gem 'annotate'
   gem 'commands'
+  gem 'thin'
 end
 
 group :production do
-  gem 'thin'
-  gem 'foreman'
-  gem 'exception_notification', '2.6.1'
+  gem 'exception_notification'
 end
 
 # Gemas Rails 4.0
@@ -45,7 +44,7 @@ gem 'routing_concerns'
 
 # Gemas de auxilio
 gem 'simple_form'
-gem 'cancan'
+gem 'cancan', '1.6.9'
 gem 'friendly_id'
 gem 'squeel'
 gem 'RedCloth'
@@ -53,12 +52,11 @@ gem 'roadie'
 gem 'bullet'
 gem 'bourbon'
 gem 'rest-client'
-gem 'rack-rewrite'
 
 # Imágenes
 gem 'dragonfly'
-gem 'fog'
+gem 'fog', '1.15.0'
 gem 'rack-cache', require: 'rack/cache'
 
 # Autenticación
-gem 'sorcery'
+gem 'sorcery', '0.8.2'

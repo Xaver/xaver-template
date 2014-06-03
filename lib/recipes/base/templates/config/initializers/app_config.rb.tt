@@ -3,6 +3,6 @@ APP_CONFIG = {
   dominio: '<%= app_name %>.herokuapp.com',
   email: 'info@<%= app_name%>.com.ar',
   bucket_name: 'xaver.<%= app_name %>',
-  access_key_id: 'AKIAJLFRFWLLZBKPNOZA',
-  secret_access_key: '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'
+  access_key_id: ENV['amazon_id'],
+  secret_access_key: ENV['amazon_secret']
 }
